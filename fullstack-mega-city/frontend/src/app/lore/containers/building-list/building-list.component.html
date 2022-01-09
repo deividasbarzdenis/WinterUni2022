@@ -1,0 +1,47 @@
+<div class="container mat-elevation-z8">
+    <div class="loading-shade" *ngIf="isLoadingResults">
+        <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+    </div>
+    <div class="button-row">
+        <a mat-flat-button color="primary" [routerLink]="['/buildings', 'new']">
+            <mat-icon>add</mat-icon>
+            Add building</a>
+    </div>
+    <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" >
+            <!-- Building Id Column -->
+            <ng-container matColumnDef="id">
+                <th class="w-75" mat-header-cell *matHeaderCellDef>{{ 'lore.building.id' | translate }}</th>
+                <td mat-cell *matCellDef="let element">
+                    <b>{{ element.id }}</b>
+                </td>
+            </ng-container>
+            <!-- Building Name Column -->
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef>{{ 'lore.building.name' | translate }}</th>
+                <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+            </ng-container>
+            <!-- Building Address Column -->
+            <ng-container matColumnDef="address">
+                <th mat-header-cell *matHeaderCellDef>{{ 'lore.building.address' | translate }}</th>
+                <td mat-cell *matCellDef="let element">{{ element.address }}</td>
+            </ng-container>
+            <!-- Building Sector Code Column -->
+            <ng-container matColumnDef="sectorCode">
+                <th class="w-100" mat-header-cell *matHeaderCellDef>{{ 'lore.building.sectorCode' | translate }}</th>
+                <td mat-cell *matCellDef="let element">{{ element.sectorCode }}</td>
+            </ng-container>
+            <!-- Building action buttons [update, delete] Column -->
+            <ng-container matColumnDef="actions">
+                <th class="w-75" mat-header-cell *matHeaderCellDef>{{ 'common.table.actions' | translate }}</th>
+                <td mat-cell *matCellDef="let element">
+                    <a mat-flat-button color="warn" (click)="deleteBuilding(element.id)"><mat-icon>delete_sweep</mat-icon></a>
+                    <a mat-flat-button color="primary" [routerLink]="['/buildings/update', element.id]"><mat-icon>edit</mat-icon></a>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns" [routerLink]="['/buildings', row.id ]"></tr>
+        </table>
+    </div>
+</div>

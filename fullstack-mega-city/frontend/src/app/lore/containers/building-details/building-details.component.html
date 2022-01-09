@@ -1,0 +1,30 @@
+<div class="container mat-elevation-z8">
+    <h2>Building Details</h2>
+    <div class="loading-shade"
+         *ngIf="isLoadingResults">
+        <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+    </div>
+    <mat-card class="example-card">
+        <mat-card-header>
+            <mat-card-title><h2>{{building.name}}</h2></mat-card-title>
+            <mat-card-subtitle>{{building.sectorCode}} sector code</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <dl>
+                <dt>Address:</dt>
+                <dd>{{building.address}}</dd>
+                <dt>Index:</dt>
+                <dd>{{building.index}}</dd>
+                <dt>Energy units:</dt>
+                <dd>{{building.energyUnits}}</dd>
+                <dt>Energy unit max:</dt>
+                <dd>{{building.energyUnitMax}}</dd>
+            </dl>
+        </mat-card-content>
+        <mat-card-actions>
+            <a mat-flat-button color="primary" [routerLink]="['/buildings']"><mat-icon>navigate_before</mat-icon>Back</a>
+            <a mat-flat-button color="primary" [routerLink]="['/buildings/update', building.id]"><mat-icon>edit</mat-icon> Edit</a>
+            <a mat-flat-button color="warn" (click)="deleteBuilding(building.id)"><mat-icon>delete_sweep</mat-icon> Delete</a>
+        </mat-card-actions>
+    </mat-card>
+</div>

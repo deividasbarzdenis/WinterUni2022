@@ -1,0 +1,71 @@
+<div class="container mat-elevation-z8">
+    <h2>{{'lore.newBuilding' | translate}}</h2>
+    <div class="loading-shade"
+         *ngIf="isLoadingResults">
+        <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+    </div>
+    <div class="button-row">
+        <a mat-flat-button color="primary" [routerLink]="['/buildings']"><mat-icon>arrow_back</mat-icon></a>
+    </div>
+    <mat-card class="card" >
+        <form [formGroup]="buildingForm" (ngSubmit)="onFormSubmit()">
+            <!--Name field-->
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>{{ 'lore.building.name' | translate }}</mat-label>
+                <input matInput placeholder="Name" formControlName="name">
+                <mat-error *ngIf="hasError('name', 'required')">{{ 'common.form.required' | translate }}</mat-error>
+                <mat-error *ngIf="hasError('name', 'maxlength')">{{
+                    'common.form.maxLength' | translate: { value: 255 }
+                    }}</mat-error>
+                <mat-error *ngIf="hasError('name', 'maxlength')">{{
+                    'common.form.maxLength' | translate: { value: 255 }
+                    }}</mat-error>
+            </mat-form-field>
+            <!--Address field-->
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>{{ 'lore.building.address' | translate }}</mat-label>
+                <input matInput placeholder="Address" formControlName="address">
+                <mat-error *ngIf="hasError('address', 'required')">{{ 'common.form.required' | translate }}</mat-error>
+                <mat-error *ngIf="hasError('address', 'maxlength')">{{
+                    'common.form.maxLength' | translate: { value: 255 }
+                    }}</mat-error>
+            </mat-form-field>
+            <!--Index field-->
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>{{ 'lore.building.index' | translate }}</mat-label>
+                <input matInput placeholder="Index" formControlName="index">
+                <mat-error *ngIf="hasError('index', 'required')">{{ 'common.form.required' | translate }}</mat-error>
+                <mat-error *ngIf="hasError('index', 'pattern')">{{ 'common.form.invalidIndex' | translate }}</mat-error>
+            </mat-form-field>
+            <!--Sector code field-->
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>{{ 'lore.building.sectorCode' | translate }}</mat-label>
+                <input matInput placeholder="Sector Code" formControlName="sectorCode">
+                <mat-error *ngIf="hasError('sectorCode', 'required')">{{ 'common.form.required' | translate }}</mat-error>
+            </mat-form-field>
+            <!--Energy units max field-->
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>{{ 'lore.building.energyUnitMax' | translate }}</mat-label>
+                <input matInput placeholder="Energy Unit Max" formControlName="energyUnitMax" type="number">
+                <mat-error *ngIf="hasError('energyUnitMax', 'required')">{{ 'common.form.required' | translate }}</mat-error>
+            </mat-form-field>
+            <!--Energy units field-->
+            <mat-form-field class="full-width" appearance="outline" >
+                <mat-label>{{ 'lore.building.energyUnits' | translate }}</mat-label>
+                <input matInput placeholder="Energy Units" formControlName="energyUnits" type="number" [max]="energyUnitMax">
+                <mat-hint>{{ 'lore.building.energyUnitsHint' | translate }}</mat-hint>
+                <mat-error *ngIf="hasError('energyUnits', 'max')">
+                    {{ 'common.form.energyUnits' | translate: {max: energyUnitMax} }}
+                </mat-error>
+                <mat-error *ngIf="hasError('energyUnits', 'required')">
+                    {{ 'common.form.required' | translate }}
+                </mat-error>
+            </mat-form-field>
+            <div class="button-row">
+                <button type="submit" [disabled]="!buildingForm.valid" mat-flat-button color="primary">
+                    <mat-icon>save</mat-icon>
+                </button>
+            </div>
+        </form>
+    </mat-card>
+</div>
