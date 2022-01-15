@@ -2,8 +2,10 @@ package com.nortal.mega.rest;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 import javax.validation.constraints.NotEmpty;
@@ -11,7 +13,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 @Data
-@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Accessors(chain = true)
 public class BuildingDto {
 
@@ -37,4 +40,5 @@ public class BuildingDto {
     @NotNull
     //@JsonProperty(access = Access.READ_ONLY)
     private Integer energyUnitMax;
+
 }
