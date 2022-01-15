@@ -1,0 +1,15 @@
+building:
+  - id: 3
+    name: "Building 1"
+    address: "Address 1"
+    index: "NO123"
+    sector_code: "PX12"
+    energy_units: 100
+    energy_unit_max: 200
+  - id: 4
+    name: "Building 2"
+    address: "Address 2"
+    index: "NO456"
+    sector_code: "PX45"
+    energy_units: 200
+    energy_unit_max: 201
