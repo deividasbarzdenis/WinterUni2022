@@ -1,5 +1,7 @@
 package com.nortal.mega.service;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -14,4 +16,5 @@ public class Building {
     private String sectorCode;
     private Integer energyUnits;
     private Integer energyUnitMax;
+
 }

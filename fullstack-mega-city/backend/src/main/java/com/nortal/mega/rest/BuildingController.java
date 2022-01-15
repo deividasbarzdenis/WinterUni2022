@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
@@ -25,7 +26,7 @@ public class BuildingController {
     }
 
     @GetMapping("/{buildingId}")
-    public ResponseEntity<BuildingDto> getBuildingById(@PathVariable Long buildingId) {
+    public ResponseEntity<?> getBuildingById(@PathVariable Long buildingId) {
         return ResponseEntity.ok(buildingDtoMapper.map(buildingService.findBuildingById(buildingId)));
     }
 

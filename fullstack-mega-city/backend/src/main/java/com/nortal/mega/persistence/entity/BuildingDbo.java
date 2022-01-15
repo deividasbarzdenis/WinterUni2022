@@ -1,6 +1,7 @@
 package com.nortal.mega.persistence.entity;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
@@ -31,4 +32,5 @@ public class BuildingDbo {
     private Integer energyUnits;
     @Column(name = "energy_unit_max", updatable=false)
     private Integer energyUnitMax;
+
 }
