@@ -16,6 +16,7 @@ public interface BuildingRepository extends CrudRepository<BuildingDbo, Long> {
     List<BuildingDbo> findAll();
     void deleteEmployeeById(long id);
 
+    // For repo test purpose
     @Query(value = "SELECT w FROM BuildingDbo w WHERE w.name LIKE ?1")
     List<BuildingDbo> findBuildingsWithNameLike(String name);
 

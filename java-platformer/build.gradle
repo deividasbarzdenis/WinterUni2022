@@ -3,8 +3,8 @@ version '1.0'
 apply plugin: 'java'
 apply plugin: 'application'
 
-sourceCompatibility = 11
-targetCompatibility = 11
+sourceCompatibility = 14
+targetCompatibility = 14
 mainClassName = "com.nortal.platformer.Game"
 
 repositories {
